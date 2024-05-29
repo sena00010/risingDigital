@@ -77,10 +77,10 @@ const DataTable = () => {
                 header: 'Date',
             },
             {
-                accessorFn: () => (
+                accessorFn: (row) => (
                     <CustomDropdown
-                        onChange={(selectedOption:any) =>
-                            console.log('Selected option:', selectedOption)
+                        onChange={() =>
+                            console.log('Number of IP:', row?.ipcount)
                         }
                     />
                 ),
