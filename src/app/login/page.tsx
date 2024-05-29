@@ -1,8 +1,9 @@
 'use client';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import styles from './page.module.css';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
+import {Box, LoadingOverlay} from "@mantine/core";
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -33,13 +34,13 @@ const LoginPage = () => {
             }
         }
     };
-
-    useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
             router.push('/dashboard');
+           return<Box pos="relative">
+               <LoadingOverlay visible={true} loaderProps={{ children: 'Loading...' }} />
+           </Box>
         }
-    }, []);
 
     return (
         <div className={styles.container}>

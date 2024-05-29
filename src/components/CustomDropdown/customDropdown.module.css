@@ -1,57 +1,61 @@
+.dropdownContainer {
+    position: relative;
+    display: inline-block;
+}
 
 .dropdown {
-    position: relative;
     width: 200px;
-}
-
-.selectedOption {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 10px;
-    border: 1px solid #ced4da;
+    font-size: 16px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    cursor: pointer;
-}
-.actionText {
-   font-weight: bold;
-    font-size: 14px;
-}
-.actionText:active {
-    color: #4359CA;
-}
-.actionText:hover {
-    color: #4359CA;
-}
-.actionTextOpen{
-    color: #4359CA;
-}
-.dropdownIcon {
-    width: 20px;
-    height: auto;
-    transition: transform 0.2s ease-in-out;
-}
-
-.options {
-    position: relative;
-    top: 100%;
-    left: 0;
-    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
     background-color: #fff;
-    border: 1px solid #ced4da;
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.option {
-    z-index: 1000;
-    padding: 10px;
+    position: relative;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
 }
 
-.option:hover {
-    background-color: #f8f9fa;
+.dropdown:hover {
+    color:#4359CA;
+}
+
+.dropdown:focus {
+    border-color: #4359CA;
+    color:#4359CA;
+
+}
+
+.dropdown option {
+    color: #000; /* Default color for options */
+}
+
+.dropdown option[value="Actions"] {
+    color: #999; /* Color for the "Actions" option */
+}
+
+.dropdown option:checked {
+    background-color: #f0f0f0;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    width: 15px;
+    height: 10px;
+}
+
+.selectedIcon {
+    color: #4359CA;
+}
+
+.dropdown-container select option:hover,
+.dropdown-container select option:focus {
+    color: #4359CA;
 }
