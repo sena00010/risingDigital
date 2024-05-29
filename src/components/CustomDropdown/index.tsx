@@ -19,7 +19,7 @@ import styles from './customDropdown.module.css';
                 className={styles.selectedOption}
                 onClick={() => setOpen(!open)}
             >
-                <span className={styles.actionText} style={{ color: '#4359CA' }}>
+                <span className={open?styles.actionTextOpen:styles.actionText} >
                     {selectedOption || 'Action'}
                 </span>
                 <img

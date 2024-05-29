@@ -13,11 +13,19 @@
     border-radius: 4px;
     cursor: pointer;
 }
-
 .actionText {
+   font-weight: bold;
+    font-size: 14px;
+}
+.actionText:active {
     color: #4359CA;
 }
-
+.actionText:hover {
+    color: #4359CA;
+}
+.actionTextOpen{
+    color: #4359CA;
+}
 .dropdownIcon {
     width: 20px;
     height: auto;
@@ -25,7 +33,7 @@
 }
 
 .options {
-    position: absolute;
+    position: relative;
     top: 100%;
     left: 0;
     width: 100%;
