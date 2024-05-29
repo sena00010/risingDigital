@@ -3,8 +3,9 @@ import styles from './sideBar.module.css';
 const Sidebar = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
-        alert('Çıkış işlemi gerçekleştirilmiştir. Başarıyla giriş sayfasına yönlendiriliyorsunuz.');
-        window.location.href = '/login';
+        setTimeout(() => {
+            window.location.href = '/login';
+        }, 1000);
     }
 
     return (

@@ -49,7 +49,6 @@ const DataTable = () => {
 
     useEffect(() => {
         fetchData();
-        console.log(data,'data');
     }, []);
 
     // Should be memoized or stable
@@ -83,6 +82,7 @@ const DataTable = () => {
                 accessorFn: (row) => {
                     return (
                         <Select
+                            onChange={() => console.log( 'Number of IP',row.ipcount)}
                             placeholder="Action"
                             data={['Processing', 'In Progress', 'Completed']}
                             rightSection={<img className={styles.image} src="/Vector.png" alt="image" />}
@@ -106,15 +106,18 @@ const DataTable = () => {
         enableSorting: false,
         mantineTableProps: {
             highlightOnHover: false,
-            striped: 'odd',
-            withColumnBorders: true,
+            withColumnBorders: false,
             withRowBorders: true,
             withTableBorder: true,
         },
     });
 
-    //using MRT_Table instead of MantineReactTable if we do not want any of the toolbar features
-    return <MRT_Table table={table} />;
-};
+        return (
+            <div>
+                <h1>Transactions History</h1>
+                <MRT_Table table={table} />
+            </div>
+        );
+    };
 
 export default DataTable;

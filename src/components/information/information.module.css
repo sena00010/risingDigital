@@ -5,6 +5,7 @@
 }
 
 .box {
+    width: 210px;
     height: 120px;
     color:black;
     padding: 20px;
@@ -14,6 +15,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .secondBox {
+    width: 210px;
     height: 120px;
     color:black;
     padding: 20px;
@@ -21,4 +23,15 @@
     border-radius: 16px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.bold{
+    font-weight: bold;
+    font-size:14px;
+}
+.boldSecond{
+    font-weight: bold;
+    font-size:24px;
+}
+.chargeAmount{
+    font-size: 24px;
 }

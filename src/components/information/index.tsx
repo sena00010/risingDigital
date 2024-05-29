@@ -16,7 +16,6 @@ export default function Information() {
                 }
             );
             setData(response.data);
-            console.log(response.data, 'response.data.data');
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -30,19 +29,19 @@ export default function Information() {
         <div className={styles.container}>
             <div className={styles.box}>
                 <div>Subscription expires on</div>
-                <div>{data.expireTime}</div>
+                <div className={styles.chargeAmount}>{data.expireTime}</div>
             </div>
             <div className={styles.secondBox}>
                 <div>Last charge</div>
-                <div>${data.lastChargeAmount} on {data.lastCharge}</div>
+                <div><span className={styles.chargeAmount}>{data.lastChargeAmount}</span> {data.lastCharge}</div>
             </div>
             <div className={styles.box}>
-                <div>Total Usage Data</div>
-                <div>{data.totalDataUsage} GB</div>
+                <div className={styles.bold}>Total Usage Data</div>
+                <div className={styles.boldSecond}>{data.totalDataUsage} GB</div>
             </div>
             <div className={styles.secondBox}>
-                <div>Daily Usage Data</div>
-                <div>{data.dailyUsage} GB</div>
+                <div  className={styles.bold}>Daily Usage Data</div>
+                <div  className={styles.boldSecond}>{data.dailyUsage} GB</div>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import styles from './page.module.css';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
@@ -27,15 +27,20 @@ const LoginPage = () => {
                         }
                     }
                 );
-
-                console.log(response,'responses')
                 localStorage.setItem('token', response.data.jwt);
-                console.log(response.data.jwt,'response.data.token')
-               await router.push('/dashboard');
+                router.push('/dashboard');
             } catch (err){
             }
         }
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            router.push('/dashboard');
+        }
+    }, [router]);
+
     return (
         <div className={styles.container}>
             <form className={styles.form} onSubmit={handleSubmit}>

@@ -9,54 +9,66 @@ import Sidebar from "@/components/sideBar";
 
 const DashboardPage = () => {
     const router = useRouter();
-    const [showDashboard, setShowDashboard] = useState(true);
-
+    const [activeTab, setActiveTab] = useState('Dashboard');
+    const [hide, setHide] = useState(false);
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
             router.push('/');
         }
     }, []);
+
     const handlePageChange = (page:any) => {
-        if (page === 'My Proxies') {
-            setShowDashboard(false);
-        } else {
-            setShowDashboard(true);
-        }
+        setActiveTab(page);
     };
+const handleClose = () => {
+    setHide(true)
+}
     return (
         <div className={styles.main}>
             <div>
                 <Sidebar/>
             </div>
-         <div className={styles.container}>
-             <div className={styles.topInfo}>
-                 <p>Special Offer! Get Complete Free Proxy 10 MB Proxy, without credit card. <span
-                     className={styles.underline}>Start Free Trial</span></p>
-                 <img className={styles.image} src="/Icon.png" alt="image"/>
-             </div>
-             <h1>Proxies & Scraping Infrastructure</h1>
-             <div className={styles.tabs}>
-                 <div className={styles.pageChanger}>
-                     <div onClick={() => handlePageChange('My Proxies')}>My Proxies</div>
-                     <div onClick={() => handlePageChange('Dashboard')}>Dashboard</div>
-                 </div>
-                 <div className={styles.divider}></div>
-             </div>
+            <div className={styles.container}>
 
-             {showDashboard ? (
-                 <>
-                     <Information/>
-                     <Chart/>
-                     <DataTable/>
-                 </>
-             ) : (
-                 <>
-                     <div>BU SAYFA MEVCUT DEĞİL</div>
-                 </>
-             )}
-         </div>
+                <div className={hide? styles.hideTopInfo:styles.topInfo}>
+                    <p>Special Offer! Get Complete Free Proxy 10 MB Proxy, without credit card.
+                        <span
+                        className={styles.underline}>Start Free Trial</span>
+                    </p>
+                    <img className={styles.image} src="/Icon.png" alt="image" onClick={handleClose}/>
+                </div>
+                <h1>Proxies & Scraping Infrastructure</h1>
+                <div className={styles.tabs}>
+                    <div className={styles.pageChanger}>
+                        <div
+                            className={`${styles.tab} ${activeTab === 'My Proxies' ? styles.activeTab : ''}`}
+                            onClick={() => handlePageChange('My Proxies')}
+                        >
+                            My Proxies
+                        </div>
+                        <div
+                            className={`${styles.tab} ${activeTab === 'Dashboard' ? styles.activeTab : ''}`}
+                            onClick={() => handlePageChange('Dashboard')}
+                        >
+                            Dashboard
+                        </div>
+                    </div>
+                    <div className={styles.divider}></div>
+                </div>
 
+                {activeTab === 'Dashboard' ? (
+                    <>
+                        <Information/>
+                        <Chart/>
+                        <DataTable/>
+                    </>
+                ) : (
+                    <>
+                        <div>BU SAYFA MEVCUT DEĞİLDİR,TASARIM DA YER ALDIĞI İÇİN EKLENMİŞTİR.</div>
+                    </>
+                )}
+            </div>
         </div>
     );
 };
