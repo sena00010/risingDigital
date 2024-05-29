@@ -7,8 +7,7 @@ import {
 } from 'mantine-react-table';
 import { useEffect, useMemo, useState } from 'react';
 import axios from "axios";
-import {Select} from "@mantine/core";
-import styles from "@/app/dashboard/page.module.css";
+import CustomDropdown from "@/components/CustomDropdown";
 interface Transactions {
     type: string;
     location: string;
@@ -30,7 +29,6 @@ const DataTable = () => {
             );
     };
     const [data, setData] = useState<any>([]);
-    const[open,setOpen]=useState(false)
     const fetchData = async () => {
         try {
             const response = await axios.get(
@@ -79,20 +77,13 @@ const DataTable = () => {
                 header: 'Date',
             },
             {
-                accessorFn: (row) => {
-                    return (
-                        <Select
-                            onChange={() => console.log( 'Number of IP',row.ipcount)}
-                            onDropdownClose={() => setOpen(false)}
-                            onDropdownOpen={() => setOpen(true)}
-                            placeholder="Action"
-                            data={['Processing', 'In Progress', 'Completed']}
-                            rightSection={open ? <img className={styles.image} src="/Vector@2x.png" alt="image"/>:
-                                <img className={styles.image} src="/Vector.png" alt="image"/>
-                            }
-                        />
-                    );
-                },
+                accessorFn: () => (
+                    <CustomDropdown
+                        onChange={(selectedOption:any) =>
+                            console.log('Selected option:', selectedOption)
+                        }
+                    />
+                ),
                 accessorKey: 'actions',
                 header: 'Actions',
             },
