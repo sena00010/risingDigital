@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.box {
+    height: 120px;
+    color:black;
+    padding: 20px;
+    background-color: #E3F5FF;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.secondBox {
+    height: 120px;
+    color:black;
+    padding: 20px;
+    background-color: #E5ECF6;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
