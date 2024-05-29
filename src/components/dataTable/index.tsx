@@ -30,7 +30,7 @@ const DataTable = () => {
             );
     };
     const [data, setData] = useState<any>([]);
-
+    const[open,setOpen]=useState(false)
     const fetchData = async () => {
         try {
             const response = await axios.get(
@@ -83,9 +83,13 @@ const DataTable = () => {
                     return (
                         <Select
                             onChange={() => console.log( 'Number of IP',row.ipcount)}
+                            onDropdownClose={() => setOpen(false)}
+                            onDropdownOpen={() => setOpen(true)}
                             placeholder="Action"
                             data={['Processing', 'In Progress', 'Completed']}
-                            rightSection={<img className={styles.image} src="/Vector.png" alt="image" />}
+                            rightSection={open ? <img className={styles.image} src="/Vector@2x.png" alt="image"/>:
+                                <img className={styles.image} src="/Vector.png" alt="image"/>
+                            }
                         />
                     );
                 },

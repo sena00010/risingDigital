@@ -39,7 +39,7 @@ const LoginPage = () => {
         if (token) {
             router.push('/dashboard');
         }
-    }, [router]);
+    }, []);
 
     return (
         <div className={styles.container}>
